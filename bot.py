@@ -10,7 +10,7 @@ bot = telebot.TeleBot(bot_token)
 
 @bot.message_handler(commands=['show'])
 def start_command(message):
-    bot.send_message(values.info)
+    bot.send_message(values.info.string)
 
 
 if __name__ == '__main__':
