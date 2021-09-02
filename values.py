@@ -39,6 +39,5 @@ def getDiskSpace():
             return (line.split()[1:5])
 
 
-info = "[CPU_TEMP]: " + getCPUtemperature() + "\n[CPU_LOAD]: " + getCPUuse() + "\n[DISK]: " + getDiskSpace()
-
-
+disk = getDiskSpace()
+info = "[CPU_TEMP]: " + getCPUtemperature() + "\n[CPU_LOAD]: " + getCPUuse() + "\n[DISK]: " + disk[3]
