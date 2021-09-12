@@ -1,16 +1,16 @@
 import values
-import telebot
-
+from aiogram import Bot, Dispatcher, executor
 
 from config import bot_token
 
-bot = telebot.TeleBot(bot_token)
+bot = Bot(bot_token)
+dp = Dispatcher(bot=bot)
 
 
-@bot.message_handler(commands=['show'])
-def start_command(message):
-    bot.send_message(message.chat.id, values.info)
+@dp.message_handler(commands=['show'])
+async def start_command(message):
+    await bot.send_message(message.chat.id, values.info)
 
 
 if __name__ == '__main__':
-    bot.polling(none_stop=True)
+    executor.start_polling(dp, skip_updates=True)
