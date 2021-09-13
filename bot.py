@@ -1,4 +1,4 @@
-import values
+from values import info
 from aiogram import Bot, Dispatcher, executor
 
 from config import bot_token
@@ -9,7 +9,7 @@ dp = Dispatcher(bot=bot)
 
 @dp.message_handler(commands=['show'])
 async def start_command(message):
-    await bot.send_message(message.chat.id, values.info)
+    await bot.send_message(message.chat.id, info)
 
 
 if __name__ == '__main__':
