@@ -10,7 +10,7 @@ def get_uptime():
     result = []
 
     for name, count in intervals:
-        value = seconds // count
+        value = int(seconds // count)
         if value:
             seconds -= value * count
             if value == 1:
