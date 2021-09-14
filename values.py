@@ -59,8 +59,9 @@ def get_cpu_temperature():
 #
 #
 # disk = getDiskSpace()
-info = "[UPTIME]: " + get_uptime() \
-       + "\n[CPU_TEMP]: " + get_cpu_temperature() \
-       + "\n[RAM]: " + get_ram_usage()
+def get_info():
+    return "[UPTIME]: " + get_uptime() \
+           + "\n[CPU_TEMP]: " + get_cpu_temperature() \
+           + "\n[RAM]: " + get_ram_usage()
 #        + "\n[CPU_LOAD]: " + getCPUuse() \
 #        + "\n[DISK]: " + disk[3]
