@@ -16,7 +16,7 @@ def get_uptime():
             if value == 1:
                 name = name.rstrip('s')
             result.append("{} {}".format(value, name))
-    return ', '.join(result[:4])
+    return ', '.join(result[:3])  # цифра 3 отвечает за отображение точности (до s/h/m...
 
 
 # использование оперативной памяти
