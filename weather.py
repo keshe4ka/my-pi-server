@@ -44,12 +44,12 @@ def get_weather():
         info = ""
         for index, location in enumerate(locations):
             weather_data.append(get_weather_for_city(location))
-        info += f"{location.get_name()} \n" \
-                f"{weather_data[index][3]} \n" \
-                f"🌡Температура: {weather_data[index][0]} ℃ \n" \
-                f"🚶🏻Ощущается как: {weather_data[index][1]} ℃ \n" \
-                f"💨Скорость ветра: {weather_data[index][2]} м/с \n" \
-                f"💧Влажность воздуха: {weather_data[index][4]} % \n\n"
+            info += f"{location.get_name()} \n" \
+                    f"{weather_data[index][3]} \n" \
+                    f"🌡Температура: {weather_data[index][0]} ℃ \n" \
+                    f"🚶🏻Ощущается как: {weather_data[index][1]} ℃ \n" \
+                    f"💨Скорость ветра: {weather_data[index][2]} м/с \n" \
+                    f"💧Влажность воздуха: {weather_data[index][4]} % \n\n"
         return info
     except Exception as ex:
         return f"Превышен лимит запросов \n{ex}"
