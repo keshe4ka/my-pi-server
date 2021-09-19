@@ -1,15 +1,15 @@
 import requests
-from config import weather_url, yandex_api_key, locations, condition_dict
+from config import weather_url, YANDEX_API_KEY, locations, condition_dict
 
 
-def get_weather_for_city(coordinates):
+def get_weather_for_city(location):
     auth = {
-        "X-Yandex-API-Key": yandex_api_key
+        "X-Yandex-API-Key": YANDEX_API_KEY
     }
 
     query_params = {
-        "lat": coordinates[0],
-        "lon": coordinates[1],
+        "lat": location.get_position()[0],
+        "lon": location.get_position()[1],
         "lang": "ru_RU"
     }
 
@@ -41,27 +41,15 @@ def get_weather_for_city(coordinates):
 def get_weather():
     try:
         weather_data = []
-        for location in locations:
+        info = ""
+        for index, location in enumerate(locations):
             weather_data.append(get_weather_for_city(location))
-
-        info = f"😎КОНОНОВА😎 \n" \
-               f"{weather_data[2][3]} \n" \
-               f"🌡Температура: {weather_data[2][0]} ℃ \n" \
-               f"🚶🏻Ощущается как: {weather_data[2][1]} ℃ \n" \
-               f"💨Скорость ветра: {weather_data[2][2]} м/с \n" \
-               f"💧Влажность воздуха: {weather_data[2][4]} %  \n\n" \
-               f"🤒ШУВАЛОВА🤒 \n" \
-               f"{weather_data[0][3]} \n" \
-               f"🌡Температура: {weather_data[0][0]} ℃ \n" \
-               f"🚶🏻Ощущается как: {weather_data[0][1]} ℃ \n" \
-               f"💨Скорость ветра: {weather_data[0][2]} м/с \n" \
-               f"💧Влажность воздуха: {weather_data[0][4]} %  \n\n" \
-               f"🤡КУПЧИНО🤡 \n" \
-               f"{weather_data[1][3]} \n" \
-               f"🌡Температура: {weather_data[1][0]} ℃ \n" \
-               f"🚶🏻Ощущается как: {weather_data[1][1]} ℃ \n" \
-               f"💨Скорость ветра: {weather_data[1][2]} м/с \n" \
-               f"💧Влажность воздуха: {weather_data[1][4]} %"
+        info += f"{location.get_name()} \n" \
+                f"{weather_data[index][3]} \n" \
+                f"🌡Температура: {weather_data[index][0]} ℃ \n" \
+                f"🚶🏻Ощущается как: {weather_data[index][1]} ℃ \n" \
+                f"💨Скорость ветра: {weather_data[index][2]} м/с \n" \
+                f"💧Влажность воздуха: {weather_data[index][4]} % \n\n"
         return info
     except Exception as ex:
         return f"Превышен лимит запросов \n{ex}"

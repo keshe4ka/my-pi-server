@@ -39,13 +39,6 @@ def get_disk_usage():
     return str(usage) + " GiB / " + str(total) + " GiB" + "  (" + str(psutil.disk_usage('/').percent) + "%) "
 
 
-# # Получаем загрузку процессора
-# def getCPUuse():
-#     return (str(os.popen("top -b -n1 | awk '/Cpu\(s\):/ {print $2}'").readline().strip( \
-#         )))
-#
-#
-
 # вывод всей информации
 def get_info():
     return "[UPTIME]: " + get_uptime() \

@@ -2,9 +2,9 @@ from server_info import get_info
 from weather import get_weather
 from aiogram import Bot, Dispatcher, executor
 
-from config import bot_token
+from config import BOT_TOKEN
 
-bot = Bot(bot_token)
+bot = Bot(BOT_TOKEN)
 dp = Dispatcher(bot=bot)
 
 
