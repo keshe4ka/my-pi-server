@@ -28,7 +28,7 @@ def get_ram_usage():
 
 # температура процессора
 def get_cpu_temperature():
-    res = os.popen('vcgencmd measure_temp').readline()
+    res = os.popen("vcgencmd measure_temp").readline()
     return res.replace("temp=", "").replace("'C\n", "") + "℃"
 
 
@@ -52,5 +52,3 @@ def get_info():
            + "\n[CPU_TEMP]: " + get_cpu_temperature() \
            + "\n[RAM]: " + get_ram_usage() \
            + "\n[DISK]: " + get_disk_usage()
-#        + "\n[CPU_LOAD]: " + getCPUuse() \
-#        + "\n[DISK]: " + disk[3]
