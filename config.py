@@ -7,6 +7,7 @@ load_dotenv(dotenv_path)
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 YANDEX_API_KEY = os.environ.get("YANDEX_API_KEY")
+CHAT_ID = os.environ.get("CHAT_ID")
 
 # интервалы времени для функции uptime в server_info.py
 intervals = (
