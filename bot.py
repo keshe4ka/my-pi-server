@@ -35,7 +35,7 @@ async def test():
 
 
 async def scheduler():
-    aioschedule.every().minute.do(test)
+    aioschedule.every().day.at("18:08").do(test)
     aioschedule.every().day.at("06:00").do(send_weather)
     aioschedule.every().day.at("06:00").do(send_weather)
     aioschedule.every().day.at("08:00").do(send_weather)
