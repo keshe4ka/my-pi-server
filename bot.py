@@ -10,8 +10,8 @@ bot = Bot(BOT_TOKEN)
 dp = Dispatcher(bot=bot)
 
 
-@dp.message_handler(commands=["show"])
-async def info_command(message):
+@dp.message_handler(commands=["server_info"])
+async def server_info_command(message):
     await bot.send_message(message.chat.id, get_info())
 
 
