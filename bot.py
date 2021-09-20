@@ -32,7 +32,6 @@ async def send_good_morning_message():
 
 async def scheduler():
     aioschedule.every().day.at("06:00").do(send_weather)
-    aioschedule.every().day.at("06:00").do(send_weather)
     aioschedule.every().day.at("08:00").do(send_weather)
     aioschedule.every().day.at("10:00").do(send_weather)
     aioschedule.every().day.at("11:00").do(send_good_morning_message)
