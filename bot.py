@@ -1,5 +1,7 @@
 from server_info import get_info
 from weather import get_weather
+from anecdote import get_joke
+
 from aiogram import Bot, Dispatcher, executor
 import aioschedule
 import asyncio
@@ -15,9 +17,10 @@ async def server_info_command(message):
     await bot.send_message(message.chat.id, get_info())
 
 
-# @dp.message_handler(commands=["weather"])
-# async def weather_command(message):
-#     await bot.send_message(message.chat.id, f"{message.chat.id}")
+@dp.message_handler(commands=["joke"])
+async def server_info_command(message):
+    await bot.send_message(message.chat.id, "Вот юморесочка такая вот держи")
+    await bot.send_message(message.chat.id, get_joke())
 
 
 async def send_weather():

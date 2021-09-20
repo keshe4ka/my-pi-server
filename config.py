@@ -68,3 +68,6 @@ condition_dict = {
     "thunderstorm-with-rain": "🌩Дождь с грозой",
     "thunderstorm-with-hail": "🌩Гроза с градом"
 }
+
+# url сайта с анекдотами
+anecdote_url = "https://baneks.ru/"
