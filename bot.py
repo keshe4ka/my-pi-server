@@ -30,11 +30,17 @@ async def send_good_morning_message():
     await bot.send_photo(CHAT_ID, f"/photos/1.jpg")
 
 
+async def test():
+    await bot.send_message(CHAT_ID, "test")
+
+
 async def scheduler():
+    aioschedule.every().minute.do(send_weather)
+    aioschedule.every().day.at("06:00").do(send_weather)
     aioschedule.every().day.at("06:00").do(send_weather)
     aioschedule.every().day.at("08:00").do(send_weather)
     aioschedule.every().day.at("10:00").do(send_weather)
-    aioschedule.every().day.at("11:00").do(send_good_morning_message())
+    aioschedule.every().day.at("11:00").do(send_good_morning_message)
     aioschedule.every().day.at("12:00").do(send_weather)
     aioschedule.every().day.at("14:00").do(send_weather)
     aioschedule.every().day.at("16:00").do(send_weather)
