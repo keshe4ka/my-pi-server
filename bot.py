@@ -29,21 +29,14 @@ async def send_weather():
 
 
 async def send_good_morning_message():
-    await bot.send_message(CHAT_ID, "Ребятули, всем доброго утра и хорошего настроения! :)")
-    await bot.send_photo(CHAT_ID, f"/photos/1.jpg")
+    await bot.send_animation(CHAT_ID, "https://c.tenor.com/R_q5ErjROlIAAAAC/smile-big-smile.gif")
 
 
 async def scheduler():
-    aioschedule.every().day.at("06:00").do(send_weather)
     aioschedule.every().day.at("08:00").do(send_weather)
-    aioschedule.every().day.at("10:00").do(send_weather)
     aioschedule.every().day.at("11:00").do(send_good_morning_message)
     aioschedule.every().day.at("12:00").do(send_weather)
-    aioschedule.every().day.at("14:00").do(send_weather)
-    aioschedule.every().day.at("16:00").do(send_weather)
     aioschedule.every().day.at("18:00").do(send_weather)
-    aioschedule.every().day.at("20:00").do(send_weather)
-    aioschedule.every().day.at("22:00").do(send_weather)
     while True:
         await aioschedule.run_pending()
         await asyncio.sleep(1)
