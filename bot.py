@@ -36,7 +36,7 @@ async def server_info_command(message):
 
 
 async def scheduler():
-    aioschedule.every(5).minute.do(collect_statistic)
+    aioschedule.every(300).seconds.do(collect_statistic)
     while True:
         await aioschedule.run_pending()
         await asyncio.sleep(1)
