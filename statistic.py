@@ -21,7 +21,7 @@ def collect_statistic():
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = connection.cursor()
         sql_insert_data = f'insert into statistic (uptime, cpu_temp, ram, disk, date, time) ' \
-                          f'values {cpu_temp}, {ram}, {disk}, {date}, {time}'
+                          f'values ({cpu_temp}, {ram}, {disk}, {date}, {time})'
         cursor.execute(sql_insert_data)
     except (Exception, Error) as error:
         print(error)
