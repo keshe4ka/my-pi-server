@@ -9,6 +9,12 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 YANDEX_API_KEY = os.environ.get("YANDEX_API_KEY")
 CHAT_ID = os.environ.get("CHAT_ID")
 
+#БД
+USER_DB = os.environ.get("USER_DB")
+PASSWORD_DB = os.environ.get("PASSWORD_DB")
+HOST_DB = os.environ.get("HOST_DB")
+PORT_DB = os.environ.get("PORT_DB")
+
 # интервалы времени для функции uptime в server_info.py
 intervals = (
     ('w', 604800),  # 60 * 60 * 24 * 7

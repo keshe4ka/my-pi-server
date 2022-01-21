@@ -1,5 +1,6 @@
 from server_info import get_info
 from weather import get_weather
+from statistic import collect_statistic
 from anecdote import get_joke
 
 from aiogram import Bot, Dispatcher, executor
@@ -23,26 +24,25 @@ async def server_info_command(message):
     await bot.send_message(message.chat.id, get_joke())
 
 
-async def send_weather():
-    await bot.send_message(CHAT_ID, "Мужики, вот сводки по погоде")
-    await bot.send_message(CHAT_ID, get_weather())
-
-
-async def send_good_morning_message():
-    await bot.send_animation(CHAT_ID, "https://c.tenor.com/R_q5ErjROlIAAAAC/smile-big-smile.gif")
+# к сожалению, мужики удалили бота из конфы
+#
+# async def send_weather():
+#     await bot.send_message(CHAT_ID, "Мужики, вот сводки по погоде")
+#     await bot.send_message(CHAT_ID, get_weather())
+#
+#
+# async def send_good_morning_message():
+#     await bot.send_animation(CHAT_ID, "https://c.tenor.com/R_q5ErjROlIAAAAC/smile-big-smile.gif")
 
 
 async def scheduler():
-    aioschedule.every().day.at("08:00").do(send_weather)
-    aioschedule.every().day.at("11:00").do(send_good_morning_message)
-    aioschedule.every().day.at("12:00").do(send_weather)
-    aioschedule.every().day.at("18:00").do(send_weather)
+    aioschedule.every(20).minutes.do(collect_statistic())
     while True:
         await aioschedule.run_pending()
         await asyncio.sleep(1)
 
 
-async def on_startup(_):
+async def on_startup():
     asyncio.create_task(scheduler())
 
 

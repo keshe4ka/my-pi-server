@@ -45,3 +45,11 @@ def get_info():
            + "\n[CPU_TEMP]: " + get_cpu_temperature() \
            + "\n[RAM]: " + get_ram_usage() \
            + "\n[DISK]: " + get_disk_usage()
+
+
+def to_statistic():
+    uptime = get_uptime()
+    cpu_temp = float(os.popen("vcgencmd measure_temp").readline().replace("temp=", "").replace("'C\n", ""))
+    ram = int((psutil.virtual_memory().total / 1024 - psutil.virtual_memory().available / 1024) / 1024)
+    disk = int((psutil.disk_usage('/').total / 1024 - psutil.disk_usage('/').free / 1024) / 1024)
+    return uptime, cpu_temp, ram, disk
