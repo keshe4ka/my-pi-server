@@ -11,7 +11,7 @@ def collect_statistic():
     now = datetime.datetime.now()
     cpu_temp, ram, disk = server_info.to_statistic()
     date = now.strftime("%d-%m-%Y")
-    time = now.strftime("%H:%M")
+    time = now.strftime("%H-%M")
     try:
         connection = psycopg2.connect(user=USER_DB,
                                       password=PASSWORD_DB,
