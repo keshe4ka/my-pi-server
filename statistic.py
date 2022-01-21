@@ -20,7 +20,7 @@ def collect_statistic():
                                       database='my_pi_server')
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = connection.cursor()
-        sql_insert_data = f'insert into statistic (uptime, cpu_temp, ram, disk, date, time) ' \
+        sql_insert_data = f'insert into statistic (cpu_temp, ram, disk, date, time) ' \
                           f'values ({cpu_temp}, {ram}, {disk}, {date}, {time})'
         cursor.execute(sql_insert_data)
     except (Exception, Error) as error:
