@@ -42,7 +42,7 @@ async def scheduler():
         await asyncio.sleep(1)
 
 
-async def on_startup():
+async def on_startup(_):
     asyncio.create_task(scheduler())
 
 
