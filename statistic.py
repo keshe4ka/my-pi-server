@@ -7,7 +7,7 @@ from psycopg2 import Error
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 
-def collect_statistic():
+async def collect_statistic():
     now = datetime.datetime.now()
     cpu_temp, ram, disk = server_info.to_statistic()
     date = now.strftime("%d/%m/%Y")
