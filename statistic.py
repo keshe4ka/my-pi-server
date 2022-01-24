@@ -55,7 +55,7 @@ def create_graph():
             date_list.append(str(row[1]))
         x = np.array(date_list)
         y = np.array(cpu_temp_list)
-        plt.figure(figsize=(15, 4))
+        plt.figure(figsize=(20, 5))
         plt.title("Температура CPU")
         plt.xlabel("время")
         plt.ylabel("температура")
