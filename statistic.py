@@ -51,10 +51,14 @@ def create_graph():
         cursor.execute(sql_select_data)
         rows = cursor.fetchall()
         for row in rows:
-            cpu_temp_list.append(row[0])
-            date_list.append(row[1])
-        x = date_list
-        y = cpu_temp_list
+            cpu_temp_list.append(float(row[0]))
+            date_list.append(str(row[1]))
+        x = np.array(date_list)
+        y = np.array(cpu_temp_list)
+        plt.title("Температура CPU")
+        plt.xlabel("дата")
+        plt.ylabel("температура")
+        plt.grid()
         plt.plot(x, y)
         plt.savefig('graph.png')
         image = Image.open('graph.png')
