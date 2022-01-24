@@ -64,4 +64,3 @@ def create_graph():
         if connection:
             cursor.close()
             connection.close()
-    return image
