@@ -59,6 +59,7 @@ def create_graph():
         plt.xlabel("время")
         plt.ylabel("температура")
         plt.grid()
+        plt.xticks(rotation=90)
         plt.figure(figsize=(15, 4))
         plt.plot(x, y)
         plt.savefig('graph.png')
