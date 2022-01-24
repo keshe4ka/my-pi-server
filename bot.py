@@ -26,7 +26,7 @@ async def server_info_command(message):
 
 @dp.message_handler(commands=["graph"])
 async def server_info_command(message):
-    await create_graph()
+    create_graph()
     await bot.send_photo(message.chat.id, photo=open('graph.png', 'rb'))
 
 
