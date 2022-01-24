@@ -1,6 +1,6 @@
 from server_info import get_info
 from weather import get_weather
-from statistic import collect_statistic
+from statistic import collect_statistic, create_graph
 from anecdote import get_joke
 
 from aiogram import Bot, Dispatcher, executor
@@ -22,6 +22,11 @@ async def server_info_command(message):
 async def server_info_command(message):
     await bot.send_message(message.chat.id, "Вот юморесочка такая вот держи")
     await bot.send_message(message.chat.id, get_joke())
+
+
+@dp.message_handler(commands=["graph"])
+async def server_info_command(message):
+    await bot.send_photo(message.chat.id, create_graph())
 
 
 # к сожалению, мужики удалили бота из конфы
