@@ -47,7 +47,7 @@ def create_graph():
                                       database='my_pi_server')
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = connection.cursor()
-        sql_select_data = f'select cpu_temp, time from statistic where date = \'24/01/2022\''#  \'{date}\';'
+        sql_select_data = f'select cpu_temp, time from statistic where date = \'24/01/2022\';'  # \'{date}\';'
         cursor.execute(sql_select_data)
         rows = cursor.fetchall()
         for row in rows:
@@ -56,9 +56,10 @@ def create_graph():
         x = np.array(date_list)
         y = np.array(cpu_temp_list)
         plt.title("Температура CPU")
-        plt.xlabel("дата")
+        plt.xlabel("время")
         plt.ylabel("температура")
         plt.grid()
+        plt.figure(figsize=(15, 4))
         plt.plot(x, y)
         plt.savefig('graph.png')
         image = Image.open('graph.png')
