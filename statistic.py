@@ -47,7 +47,7 @@ def create_graph():
                                       database='my_pi_server')
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = connection.cursor()
-        sql_select_data = f'select cpu_temp, time from statistic where date = \'24/01/2022\';'  # \'{date}\';'
+        sql_select_data = f'select cpu_temp, time from statistic where date = \'{date}\';'
         cursor.execute(sql_select_data)
 
         rows = cursor.fetchall()
