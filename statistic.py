@@ -34,7 +34,7 @@ async def collect_statistic():
             connection.close()
 
 
-async def create_graph():
+def create_graph():
     now = datetime.datetime.now()
     date = now.strftime("%d/%m/%Y")
     cpu_temp_list = []
