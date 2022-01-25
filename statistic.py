@@ -46,7 +46,7 @@ def create_graph():
                                       database='my_pi_server')
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = connection.cursor()
-        sql_select_data = f'select ram, cpu_temp, time from statistic order by id desc limit 0,144;'
+        sql_select_data = f'select ram, cpu_temp, time from statistic order by id desc limit 144;'
         cursor.execute(sql_select_data)
 
         rows = cursor.fetchall()
