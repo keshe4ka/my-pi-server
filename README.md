@@ -28,8 +28,10 @@ PORT_DB=5432
 В конец файла вставляем:  
 ```
 [include]
-files = /etc/supervisor/conf.d/*.conf```  
-```sudo nano /etc/supervisor/conf.d/my_pi_server```  
+files = /etc/supervisor/conf.d/*.conf
+```  
+
+```sudo nano /etc/supervisor/conf.d/my_pi_server```    
 Вставляем:  
 ```
 [program:my_pi_server_bot]
@@ -64,7 +66,8 @@ CREATE TABLE statistic (
     date varchar(20),
     time varchar(20)
     varchar(80),
-);```  
+);
+```  
 
 ```exit```
 
