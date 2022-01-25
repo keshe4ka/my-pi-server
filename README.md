@@ -9,7 +9,9 @@
 
 2. Создать .env файл для хранения конфигов  
 ```cd my_pi_server```  
+
 ```nano .env```  
+
 Вставить переменные со значениями:  
 ```
 BOT_TOKEN=12345
@@ -24,7 +26,9 @@ PORT_DB=5432
 
 4. Установка и настройка supervisor   
 ```sudo apt update && sudo apt upgrade && sudo apt install supervisor```  
+
 ```sudo nano /etc/supervisor/supervisord.conf```  
+
 В конец файла вставляем:  
 ```
 [include]
@@ -32,6 +36,7 @@ files = /etc/supervisor/conf.d/*.conf
 ```  
 
 ```sudo nano /etc/supervisor/conf.d/my_pi_server```    
+
 Вставляем:  
 ```
 [program:my_pi_server_bot]
@@ -51,12 +56,19 @@ stdout_logfile=/var/log/my_pi_server_bot.out.log
 
 5. Для построения графиков нужно создать БД    
 ```sudo apt install postgresql```    
+
 ```sudo su - postgres```  
+
 ```psql```  
+
 ```create user myuser with encrypted password 'mypass';```  
+
 ```create database my_pi_server;```  
+
 ```grant all privileges on database my_pi_server to myuser;```  
+
 ```\c my_pi_server```  
+
 ```
 CREATE TABLE statistic (
     id serial primary key,
