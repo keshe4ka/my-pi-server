@@ -11,7 +11,8 @@
 ```cd my_pi_server```  
 ```nano .env```  
 Вставить переменные со значениями:  
-```BOT_TOKEN=12345
+```
+BOT_TOKEN=12345
 USER_DB=user
 PASSWORD_DB=12345
 HOST_DB=localhost
@@ -25,11 +26,13 @@ PORT_DB=5432
 ```sudo apt update && sudo apt upgrade && sudo apt install supervisor```  
 ```sudo nano /etc/supervisor/supervisord.conf```  
 В конец файла вставляем:  
-```[include]
+```
+[include]
 files = /etc/supervisor/conf.d/*.conf```  
 ```sudo nano /etc/supervisor/conf.d/my_pi_server```  
 Вставляем:  
-```[program:my_pi_server_bot]
+```
+[program:my_pi_server_bot]
 command=/usr/bin/python3 указать_путь_к/bot.py
 user=pi
 process_name=%(program_name)s
@@ -52,7 +55,8 @@ stdout_logfile=/var/log/my_pi_server_bot.out.log
 ```create database my_pi_server;```  
 ```grant all privileges on database my_pi_server to myuser;```  
 ```\c my_pi_server```  
-```CREATE TABLE statistic (
+```
+CREATE TABLE statistic (
     id serial primary key,
     cpu_temp real,
     ram integer,
@@ -61,6 +65,7 @@ stdout_logfile=/var/log/my_pi_server_bot.out.log
     time varchar(20)
     varchar(80),
 );```  
+
 ```exit```
 
 6. Запускаем  
