@@ -2,12 +2,12 @@
 
 <img align="center" width="414" height="641" src="https://github.com/keshe4ka/my_pi_server/blob/main/photos/Rz6oTi1Y5lk.jpg?raw=true">
 
-### Как установить и настроить
+## Установка и настройка
 
-1. Склонировать репозиторий  
+### Склонировать репозиторий  
 ```git clone https://github.com/keshe4ka/my_pi_server.git```  
 
-2. Создать .env файл для хранения конфигов  
+### Создать .env файл для хранения конфигов  
 ```cd my_pi_server```  
 
 ```nano .env```  
@@ -21,10 +21,10 @@ HOST_DB=localhost
 PORT_DB=5432
 ```
 
-3. Установка пакетов  
+### Установка пакетов  
 ```pip3 install -r requirements.txt```  
 
-4. Установка и настройка supervisor   
+### Установка и настройка supervisor   
 ```sudo apt update && sudo apt upgrade && sudo apt install supervisor```  
 
 ```sudo nano /etc/supervisor/supervisord.conf```  
@@ -51,10 +51,12 @@ stderr_logfile=/var/log/my_pi_server_bot.err.log
 stdout_logfile=/var/log/my_pi_server_bot.out.log
 ```  
 ```sudo service supervisor start```  
+
 ```sudo supervisorctl reread```  
+
 ```sudo supervisorctl update```  
 
-5. Для построения графиков нужно создать БД    
+### Для построения графиков нужно создать БД    
 ```sudo apt install postgresql```    
 
 ```sudo su - postgres```  
@@ -83,7 +85,7 @@ CREATE TABLE statistic (
 
 ```exit```
 
-6. Запускаем  
+### Запускаем  
 ```sudo service supervisor start```
 
 ### Надеюсь, что вы не забыли про созданного с помощью @BotFather бота?
