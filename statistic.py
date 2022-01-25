@@ -35,8 +35,6 @@ async def collect_statistic():
 
 
 def create_graph():
-    now = datetime.datetime.now()
-    date = now.strftime("%d/%m/%Y")
     ram_list = []
     cpu_temp_list = []
     date_list = []
@@ -48,7 +46,7 @@ def create_graph():
                                       database='my_pi_server')
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = connection.cursor()
-        sql_select_data = f'select ram, cpu_temp, time from statistic where date = \'{date}\';'
+        sql_select_data = f'select ram, cpu_temp, time from statistic order by id desc limit 0,144;'
         cursor.execute(sql_select_data)
 
         rows = cursor.fetchall()
