@@ -37,7 +37,7 @@ async def collect_statistic():
 def create_graph():
     ram_list = []
     cpu_temp_list = []
-    date_list = []
+    time_list = []
     try:
         connection = psycopg2.connect(user=USER_DB,
                                       password=PASSWORD_DB,
@@ -46,16 +46,17 @@ def create_graph():
                                       database='my_pi_server')
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = connection.cursor()
-        sql_select_data = f'select ram, cpu_temp, time from statistic order by id desc limit 144;'
+        sql_select_data = f'select ram, cpu_temp, time from statistic order by id desc limit 120;'
         cursor.execute(sql_select_data)
 
         rows = cursor.fetchall()
         for row in rows:
             ram_list.append(int(row[0]))
             cpu_temp_list.append(float(row[1]))
-            date_list.append(str(row[2]))
+            time_list.append(str(row[2]))
+        time_list.reverse()
 
-        x = np.array(date_list)
+        x = np.array(time_list)
         y = np.array(cpu_temp_list)
         plt.figure(figsize=(25, 5))
         plt.title("Температура CPU")
@@ -66,7 +67,7 @@ def create_graph():
         plt.plot(x, y)
         plt.savefig('/home/pi/Documents/my_pi_server/photos/graph1.png')
 
-        x = np.array(date_list)
+        x = np.array(time_list)
         y = np.array(ram_list)
         plt.figure(figsize=(25, 5))
         plt.title("Использование RAM")
