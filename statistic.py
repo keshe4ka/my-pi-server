@@ -37,6 +37,7 @@ async def collect_statistic():
 def create_graph():
     now = datetime.datetime.now()
     date = now.strftime("%d/%m/%Y")
+    ram_list = []
     cpu_temp_list = []
     date_list = []
     try:
@@ -47,24 +48,36 @@ def create_graph():
                                       database='my_pi_server')
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = connection.cursor()
-        sql_select_data = f'select cpu_temp, time from statistic where date = \'{date}\';'
+        sql_select_data = f'select ram, cpu_temp, time from statistic where date = \'{date}\';'
         cursor.execute(sql_select_data)
 
         rows = cursor.fetchall()
         for row in rows:
-            cpu_temp_list.append(float(row[0]))
-            date_list.append(str(row[1]))
+            ram_list.append(int(row[0]))
+            cpu_temp_list.append(float(row[1]))
+            date_list.append(str(row[2]))
 
         x = np.array(date_list)
         y = np.array(cpu_temp_list)
         plt.figure(figsize=(25, 5))
         plt.title("Температура CPU")
         plt.xlabel("время")
-        plt.ylabel("температура")
+        plt.ylabel("температура, ℃")
         plt.grid()
         plt.xticks(rotation=90)
         plt.plot(x, y)
-        plt.savefig('/home/pi/Documents/my_pi_server/photos/graph.png')
+        plt.savefig('/home/pi/Documents/my_pi_server/photos/graph1.png')
+
+        x = np.array(date_list)
+        y = np.array(ram_list)
+        plt.figure(figsize=(25, 5))
+        plt.title("Использование RAM")
+        plt.xlabel("время")
+        plt.ylabel("память, MB")
+        plt.grid()
+        plt.xticks(rotation=90)
+        plt.plot(x, y)
+        plt.savefig('/home/pi/Documents/my_pi_server/photos/graph2.png')
 
     except (Exception, Error) as error:
         print(error)
