@@ -64,7 +64,7 @@ def create_graph():
         plt.grid()
         plt.xticks(rotation=90)
         plt.plot(x, y)
-        plt.savefig('graph.png')
+        plt.savefig('/home/pi/Documents/my_pi_server/photos/graph.png')
 
     except (Exception, Error) as error:
         print(error)

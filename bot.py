@@ -27,7 +27,7 @@ async def server_info_command(message):
 @dp.message_handler(commands=["graph"])
 async def server_info_command(message):
     create_graph()
-    await bot.send_photo(message.chat.id, photo=open('graph.png', 'rb'))
+    await bot.send_photo(message.chat.id, photo=open('/home/pi/Documents/my_pi_server/photos/graph.png', 'rb'))
 
 
 # к сожалению, мужики удалили бота из конфы
