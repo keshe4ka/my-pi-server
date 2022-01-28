@@ -22,7 +22,8 @@ PORT_DB=5432
 ```
 
 ### Установка пакетов  
-```pip3 install -r requirements.txt```  
+- ```pip3 install -r requirements.txt```  
+или можно через poetry
 
 ### Установка и настройка supervisor   
 ```sudo apt update && sudo apt upgrade && sudo apt install supervisor```  
